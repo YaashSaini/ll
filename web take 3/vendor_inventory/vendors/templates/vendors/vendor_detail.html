@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* General Styles */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0;
+      }
+
+      h2,
+      h3 {
+        text-align: center;
+        color: #333;
+        margin-top: 20px;
+      }
+
+      p {
+        text-align: center;
+        color: #666;
+        margin: 10px auto;
+        max-width: 600px;
+      }
+
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* Vendor Website Link */
+      a[href*="http"] {
+        display: block;
+        text-align: center;
+        margin: 10px auto;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 4px;
+        max-width: 200px;
+      }
+
+      a[href*="http"]:hover {
+        background-color: #0056b3;
+      }
+
+      /* Products List */
+      ul {
+        list-style-type: none;
+        padding: 0;
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      li {
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      li:last-child {
+        border-bottom: none;
+      }
+
+      li a {
+        color: #28a745;
+      }
+
+      li a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    {% extends 'vendors/base.html' %} {% block content %}
+    <h2>{{ vendor.name }}</h2>
+    <p>{{ vendor.description }}</p>
+    <a href="{{ vendor.website }}">Website</a>
+
+    <h3>Products</h3>
+    <ul>
+      {% for product in products %}
+      <li>{{ product.name }} - <a href="{{ product.pdf.url }}">PDF</a></li>
+      {% endfor %}
+    </ul>
+    {% endblock %}
+  </body>
+</html>
